@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ── WILD TYPE SYSTEM ── */
+    /* Hero display: Azonix — geometric sci-fi with remapped letterforms */
+    --font-hero: 'Azonix', 'Conthrax', sans-serif;
+    /* Section headings: Conthrax — bold military techno condensed */
+    --font-display: 'Conthrax', 'Nasalization', sans-serif;
+    /* Subheadings / callouts: Nasalization — space-age rounded techno */
+    --font-sub: 'Nasalization', 'Audiowide', sans-serif;
+    /* Body / paragraphs: Audiowide — retro-tech readable */
+    --font-body: 'Audiowide', sans-serif;
+    /* Tech labels / nav / UI chrome: Orbitron — the sci-fi classic */
+    --font-tech: 'Orbitron', sans-serif;
+    /* Decorative accent: Blanka — hollow inline wild letterforms */
+    --font-accent: 'Blanka', sans-serif;
+    /* Terminal / code: JetBrains Mono */
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* ── COLOURS ── */
+    --bg-primary: #F8F9FA;
+    --text-primary: #0D0E12;
+    --accent-electric: #0052FF;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F3F5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+}
+
+/* ── TYPE UTILITY CLASSES ── */
+
+/* Hero: Azonix — for giant headline text in hero sections */
+.font-hero {
+  font-family: 'Azonix', 'Conthrax', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Display: Conthrax — for section headings, card titles */
+.font-display {
+  font-family: 'Conthrax', 'Nasalization', sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* Sub-heading: Nasalization — for subheadings, callout blocks */
+.font-sub {
+  font-family: 'Nasalization', 'Audiowide', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Body: Audiowide — for paragraphs, descriptions */
+.font-body {
+  font-family: 'Audiowide', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Tech / Nav: Orbitron — for labels, badges, nav items, eyebrows */
+.font-tech {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+/* Decorative accent: Blanka — for big decorative text, behind-text watermarks */
+.font-accent {
+  font-family: 'Blanka', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Mono / terminal / code */
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Legacy aliases kept for backward compatibility */
+.font-wide { font-family: 'Conthrax', sans-serif; letter-spacing: 0.04em; }
+
+/* ── BACKGROUNDS ── */
+
+/* Micro-grid architectural background */
+.bg-architectural-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+}
+
+/* Glassmorphism token */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ── CURSOR BORDER-HIGHLIGHT SYSTEM ── */
+/* Applied dynamically via JS when cursor hovers interactive elements */
+.cursor-highlight-active {
+  outline: 2px solid #0052FF !important;
+  outline-offset: 3px;
+  transition: outline 0.15s ease;
+}
+
+
+
+
+.glass-panel-dark {
+  background: rgba(13, 14, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
+}
+
+/* Magnetic active states */
+.interactive-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.interactive-hover:hover {
+  transform: translateY(-2px);
+}
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
