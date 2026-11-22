@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LenisProvider } from './context/LenisContext';
@@ -12,6 +12,9 @@ import { KineticMarquee } from './components/KineticMarquee';
 import { ContactSection } from './components/ContactSection';
 import { CustomCursor } from './components/CustomCursor';
 import { WorkPage } from './pages/WorkPage';
+
+// Admin console is code-split so it never ships in the public bundle.
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // sessionStorage key — set once so returning from /work skips the loader
 const LOADED_KEY = 'portfolio_loaded';
@@ -56,6 +59,20 @@ export function App() {
           <Routes>
             <Route path="/"     element={<HomePage />} />
             <Route path="/work" element={<WorkPage />} />
+            <Route
+              path="/admin"
+              element={
+                <Suspense
+                  fallback={
+                    <div className="min-h-screen bg-[#0D0E12] text-zinc-500 flex items-center justify-center font-mono text-sm">
+                      loading console…
+                    </div>
+                  }
+                >
+                  <AdminPage />
+                </Suspense>
+              }
+            />
           </Routes>
         </NavProvider>
       </LenisProvider>
