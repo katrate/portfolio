@@ -302,7 +302,6 @@ class ASLSignTranslator:
     language: 'TypeScript',
     tags: ['React', 'TypeScript', 'Tailwind', 'Markdown', 'Vercel'],
     githubUrl: 'https://github.com/katrate/notie',
-    liveUrl: 'https://website-gold-six-23.vercel.app/',
     image: '/assets/synapse.jpg',
     releasesUrl: 'https://github.com/katrate/notie/releases/tag/v0.1.11',
     status: 'active',
@@ -322,28 +321,24 @@ class ASLSignTranslator:
     },
   },
   {
-    id: 'fintrack',
-    name: 'fintrack',
+    id: 'localvault',
+    name: 'localvault',
     category: 'APPS',
-    categoryLabel: 'Fintech & Analytics App',
-    tagline: 'Open-source personal finance ledger & balance analytics dashboard',
+    categoryLabel: 'Security & Encryption App',
+    tagline: 'Fully local, offline, AES-256 encrypted password manager',
     description:
-      'Personal financial recording and budget visualization dashboard with multi-currency tracking, recurring transaction forecasting, and export capabilities.',
-    language: 'TypeScript',
-    tags: ['Next.js', 'Fintech', 'Analytics', 'Charts', 'TypeScript'],
-    githubUrl: 'https://github.com/katrate/fintrack',
-    liveUrl: 'https://fintrack-website-virid.vercel.app/',
-    image: '/assets/nebula.jpg',
-    releasesUrl: 'https://github.com/katrate/fintrack/releases/tag/v0.5.0',
+      'Zero-network Electron vault with dual-credential scrypt login, AES-256-GCM envelope encryption, clipboard auto-wipe, and idle auto-lock. No cloud, no telemetry, no external requests.',
+    language: 'JavaScript',
+    tags: ['Electron', 'AES-256-GCM', 'scrypt', 'Security', 'Offline'],
+    githubUrl: 'https://github.com/katrate/localvault',
+    image: '/assets/vortex.jpg',
     codeSnippet: {
-      lang: 'typescript',
-      filename: 'ledger_calculator.ts',
-      code: `export function calculateCashFlow(transactions: Transaction[]) {
-  return transactions.reduce((acc, t) => {
-    acc[t.category] = (acc[t.category] || 0) + t.amount;
-    return acc;
-  }, {} as Record<string, number>);
-}`,
+      lang: 'javascript',
+      filename: 'vault.js',
+      code: `const iv = crypto.randomBytes(12);
+const cipher = crypto.createCipheriv('aes-256-gcm', masterKey, iv);
+const tag = cipher.getAuthTag();
+const sealed = Buffer.concat([cipher.update(secret, 'utf8'), cipher.final()]);`,
     },
   },
   {
